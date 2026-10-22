@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert PDF files to DOCX and JPG images to PDF in your browser.">
+  <title>FileFlow — File Converter</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+  <script src="https://unpkg.com/mammoth@1.8.0/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#"><span class="brand-icon">F</span>FileFlow</a>
+    <span class="privacy"><span></span> Processed in your browser</span>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="eyebrow">SIMPLE · FAST · FREE</div>
+      <h1>Your files, <span>your way.</span></h1>
+      <p class="subtitle">Convert PDF files to Word documents or turn JPG images into PDFs. No account required.</p>
+    </section>
+
+    <section class="converter" aria-label="File converter">
+      <div class="tabs">
+        <button class="tab active" id="pdfToDocxTab" type="button">
+          <span class="tab-icon pdf">PDF</span> PDF to DOCX
+        </button>
+        <button class="tab" id="jpgToPdfTab" type="button">
+          <span class="tab-icon pdf">JPG</span> JPG to PDF
+        </button>
+      </div>
+
+      <div class="upload-area" id="dropZone" tabindex="0" role="button" aria-label="Choose or drop a file">
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+        <div class="upload-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path>
+            <path d="M20 16.5v2A1.5 1.5 0 0 1 18.5 20h-13A1.5 1.5 0 0 1 4 18.5v-2"></path>
+          </svg>
+        </div>
+        <h2 id="uploadTitle">Drop your PDF here</h2>
+        <p id="uploadDescription">or choose a file from your computer</p>
+        <button class="choose-button" id="chooseButton" type="button">Choose file</button>
+        <p class="file-limit" id="fileLimit">PDF files only · Maximum 20 MB</p>
+      </div>
+
+      <div class="selected-file" id="selectedFile" hidden>
+        <div class="file-icon" id="fileIcon">PDF</div>
+        <div class="file-info"><strong id="fileName">document.pdf</strong><span id="fileSize"></span></div>
+        <button class="remove-button" id="removeButton" type="button" aria-label="Remove file">×</button>
+      </div>
+
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-label"><span id="statusText">Preparing file…</span><span id="progressPercent">0%</span></div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+
+      <div class="message" id="message" role="status" aria-live="polite" hidden></div>
+
+      <button class="convert-button" id="convertButton" type="button" disabled>
+        <span id="convertLabel">Convert to DOCX</span> <span aria-hidden="true">→</span>
+      </button>
+
+      <div class="result" id="result" hidden>
+        <div class="result-icon">✓</div>
+        <div class="result-text"><strong>Conversion complete</strong><span id="resultName">Your file is ready.</span></div>
+        <button class="download-button" id="downloadButton" type="button">Download</button>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature"><div class="feature-icon">↗</div><div><h3>Preserve page appearance</h3><p>PDF pages are placed into Word as full-page images.</p></div></div>
+      <div class="feature"><div class="feature-icon">⌑</div><div><h3>Browser processing</h3><p>Your document isn't uploaded to a conversion server.</p></div></div>
+      <div class="feature"><div class="feature-icon">∞</div><div><h3>Free to use</h3><p>No account or subscription needed.</p></div></div>
+    </section>
+
+    <p class="disclaimer">PDF to DOCX preserves each page visually as an image. JPG to PDF places your image into a downloadable PDF. Files are processed in your browser.</p>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-icon">F</span>FileFlow</a><p>Made for documents. Built for simplicity.</p></footer>
+</body>
+</html>
